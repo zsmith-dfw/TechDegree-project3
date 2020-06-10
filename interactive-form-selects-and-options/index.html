@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Selects and Options</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>Selects and Options</h1>
+      <p>Treehouse Full Stack JavaScript Techdegree</p>
+      <p>Project Warm Up</p>
+    </header>
+
+    <form action="index.html" method="post">
+      <fieldset class="shirt-selection">
+        <legend>Mike's Shirts</legend>  
+        
+        <ul id="shirt-list">
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-yellow.jpg" alt="Yellow shirt"></a></li>
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-blue.jpg" alt="Blue shirt"></a></li>
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-orange.jpg" alt="Orange shirt"></a></li>
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-grey.jpg" alt="Grey shirt"></a></li>
+        </ul>
+        
+        <div>
+          <label for="shirt-select-element">Shirt Selection:</label>
+          <select id="shirt-select-element" name="shirt">
+            <option value="Select a shirt">Select a shirt</option>
+            <option value="Yellow shirt">Yellow shirt</option>
+            <option value="Blue shirt">Blue shirt</option>
+            <option value="Orange shirt">Orange shirt</option>
+            <option value="Grey shirt">Grey shirt</option>
+          </select>
+        </div>
+
+      </fieldset>
+    </form>
+    
+    <script src="js/script.js"></script>
+  </body>
+</html>

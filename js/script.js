@@ -15,24 +15,23 @@ const hideColors = document.getElementById('color');
 hideColors.hidden=true;
 
 
-const punsTheme = document.querySelectorAll('#design option')[1]
-const loveTheme = document.querySelectorAll('#design option')[2]
-const showDesign = document.querySelector('#design')
+let punsTheme = document.querySelectorAll('#design option')[1]
+let loveTheme = document.querySelectorAll('#design option')[2]
+let showDesign = document.querySelector('#design')
 
-
+const color1 = document.querySelectorAll('#color option')[3]
+const color2 = document.querySelectorAll('#color option')[4]
+const color3 = document.querySelectorAll('#color option')[5]
+const color4 = document.querySelectorAll('#color option')[0]
+const color5 = document.querySelectorAll('#color option')[1]
+const color6 = document.querySelectorAll('#color option')[2]
 
 showDesign.addEventListener('change', (e) => {
 
+  let eventValue = event.target.value
+
   if(punsTheme.selected = true) {
     hideColors.hidden=false;
-
-    const color1 = document.querySelectorAll('#color option')[3]
-    const color2 = document.querySelectorAll('#color option')[4]
-    const color3 = document.querySelectorAll('#color option')[5]
-    const color4 = document.querySelectorAll('#color option')[0]
-    const color5 = document.querySelectorAll('#color option')[1]
-    const color6 = document.querySelectorAll('#color option')[2]
-
     color1.hidden = true
     color2.hidden = true
     color3.hidden = true 
@@ -40,7 +39,7 @@ showDesign.addEventListener('change', (e) => {
     color5.hidden = false
     color6.hidden = false
 
-} else if (loveTheme.selected = true) {
+} if (loveTheme === eventValue) {
   hideColors.hidden = false;
   color1.hidden = false
   color2.hidden = false

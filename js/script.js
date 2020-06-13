@@ -72,7 +72,7 @@ activities.addEventListener('change', (e) => {
   let displayCost = clicked.getAttribute('data-cost');
   displayCost = parseInt(displayCost);
   // console.log(displayCost);
-  if (activities === clicked) {
+  if (clicked.checked) {
     activityCost = activityCost + displayCost
 
   } else {
@@ -81,9 +81,46 @@ activities.addEventListener('change', (e) => {
   }
   console.log(activityCost);
 
+  activityRollup.textContent = `Total: $${activityCost}`
+
+  let dateTimeGroup = clicked.getAttribute('data-day-and-time');
+  console.log(dateTimeGroup);
+
+  for (let i = 0; i < activities.length; i ++) {
+    const checkboxType = activities[i].getAttribute('data-day-and-time');
+    console.log(checkboxType);
+    if (dateTimeGroup === checkboxType && clicked !== activities[i]) {
+      if (clicked.checked) {
+          activities[i].disabled = true
+
+      } else {
+        activities[i].disabled = false 
+      }
+
+    }
+
+  }
+
 })
 
-
+// const checkboxes = document.querySelectorAll('.options input');
+// /**
+//  * Event listener for checkboxes
+//  */
+// document.querySelector('.options').addEventListener('change', (e) => {
+//   // YOUR CODE GOES HERE!!! Do the steps below to complete this challenge
+//   const clicked = e.target
+//   const clickedType = clicked.getAttribute('data-type')
+//   console.log(clicked)
+//   console.log(clickedType)
+//   for (let i = 0; i < checkboxes.length; i++) {
+//     const checkboxType = checkboxes[i].getAttribute('data-type')
+//    if (clickedType === checkboxType && clicked !== checkboxes[i]) {
+//      checkboxes[i].disabled = true
+//   } else {
+//     checkboxes[i].disabled = false;
+//   }
+// }
 
 
 

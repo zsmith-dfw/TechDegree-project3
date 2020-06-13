@@ -11,54 +11,84 @@ const hideTheme = document.querySelectorAll('#design option')[0];
 hideTheme.hidden = true;
 const changeColor = document.querySelector('label[for="color"]');
 changeColor.textContent = 'Please select a T-shirt theme.'
-const hideColors = document.getElementById('color');
-hideColors.hidden=true;
+let allColors = document.getElementById('color');
+allColors.hidden=true;
 
 
+console.log(allColors);
 let punsTheme = document.querySelectorAll('#design option')[1]
 let loveTheme = document.querySelectorAll('#design option')[2]
 let showDesign = document.querySelector('#design')
 
-const color1 = document.querySelectorAll('#color option')[3]
-const color2 = document.querySelectorAll('#color option')[4]
-const color3 = document.querySelectorAll('#color option')[5]
-const color4 = document.querySelectorAll('#color option')[0]
-const color5 = document.querySelectorAll('#color option')[1]
-const color6 = document.querySelectorAll('#color option')[2]
 
-showDesign.addEventListener('change', (e) => {
+showDesign.addEventListener('change', (e) => { // change event listener
+ console.log(e.target.value);
+ allColors.hidden = false // displayig color section
+  for (let i = 0; i < allColors.length; i ++) { // for loop looping through color options
+    if (e.target.value === 'js puns') { //if what user picks equals the punsTheme
+      if (allColors[i].innerHTML.includes('JS Puns')) { // if loop includes context JS puns
+       console.log(allColors[i].innerHTML);
+        allColors[i].style.display = 'block' //display them
+        allColors[0].selected = true;
+        
+      } else {
+        allColors[i].style.display = 'none' // if not display none
+      }
 
-  let eventValue = event.target.value
 
-  if(punsTheme.selected = true) {
-    hideColors.hidden=false;
-    color1.hidden = true
-    color2.hidden = true
-    color3.hidden = true 
-    color4.hidden = false
-    color5.hidden = false
-    color6.hidden = false
+    }
+    else if (e.target.value === 'heart js') {
+      if (allColors[i].innerHTML.includes('JS shirt')) {
+        console.log(allColors[i].innerHTML);
 
-} if (loveTheme === eventValue) {
-  hideColors.hidden = false;
-  color1.hidden = false
-  color2.hidden = false
-  color3.hidden = false
-  color4.hidden = true
-  color5.hidden = true
-  color6.hidden = true
+   
+        allColors[i].style.display = 'block'
+        allColors[3].selected = true;
 
-}
+      } else {
+        allColors[i].style.display = 'none'
+
+      }
+
+    }
+  }
+
 
 });
 
 
-// IF design option === 'Theme - JS Puns'
-// show color drop down
-// hide/disable colors from the other theme
-// show colors from the correct theme (so it will always unhide if you switch back and forth)
-// ELSE IF design option === 'Theme - I :heart: JS'
-// show color drop down
-// hide/disable colors from the other theme
-// show colors from the correct theme
+
+//ACTIVITY SECTION
+
+let activityRollup = document.createElement('div')
+const activities = document.querySelector('.activities');
+activities.appendChild(activityRollup);
+let activityCost = 0
+console.log(activityRollup);
+
+activities.addEventListener('change', (e) => {
+  const clicked = e.target;
+  console.log(clicked);
+  let displayCost = clicked.getAttribute('data-cost');
+  displayCost = parseInt(displayCost);
+  // console.log(displayCost);
+  if (activities === clicked) {
+    activityCost = activityCost + displayCost
+
+  } else {
+    activityCost = activityCost - displayCost
+    
+  }
+  console.log(activityCost);
+
+})
+
+
+
+
+
+
+
+
+
 

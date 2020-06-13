@@ -1,0 +1,138 @@
+/**
+ * Treehouse FSJS Techdegree - Project Warm Up
+ * Checkboxes - CSS
+ * Developed by: Robert Manolis - Student Success Specialist
+ *               Milwaukie, OR - 2019
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+* {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+	text-align: center;
+}
+
+h1 {
+  color: rgba(25, 215, 75, 0.7);
+  text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.9);
+}
+
+p {
+  line-height: 0.65;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  display: inline-block
+}
+
+.list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 620px;
+  height: 115px;
+  margin: 45px auto 35px;
+  padding: 10px;
+  background: rgba(50, 50, 50, 0.1);
+  border: 1px solid rgba(60, 60, 66, 0.45);
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0, 0.25) inset;
+}
+
+.item {
+  font-size: 4em;
+  font-weight: bold;
+  color: rgba(50, 50, 50, 0.1);
+  width: 75px;
+  height: 75px;
+  margin: 10px auto;
+  background: rgba(255, 255, 255, 0.999);
+  border: 1px solid rgba(57, 83, 65, 0.3);
+  border-radius: 4px;
+  box-shadow: 0px 2px 2px rgba(25, 25, 25, 0.35);
+  transition: all 0.4s;
+}
+
+form {
+  max-width: 620px;
+  margin: 25px auto;
+  padding: 25px;
+  background: rgba(50, 50, 50, 0.1);
+  border: 1px solid rgba(60, 60, 66, 0.45);
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.3), 1px 1px 3px rgba(25, 25, 25, 0.5) inset, -1px -1px 3px rgba(25, 25, 25, 0.5) inset;
+}
+
+fieldset {
+  text-align: left;
+  background: rgba(255, 255, 255, 1.0);
+  margin-bottom: 15px;
+  padding: 25px;
+  border-radius: 4px;
+}
+
+legend {
+  color: white;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(25, 25, 25, 0.8);
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(50, 50, 50, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.7) inset, -1px -1px 2px rgba(255, 255, 255, 0.57) inset;
+}
+
+.form-section {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 100px;
+}
+
+fieldset span {
+  display: inline-block;
+  font-size: 1.1em;
+  font-weight: bolder;
+  margin: 0px auto 10px;
+}
+
+label {
+  display: block;
+}
+
+.control-btn {
+  cursor: pointer;
+  outline: none;
+  color: white;
+  width: 100px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(50, 50, 50, 0.9);
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(25, 25, 25, 0.8), 1px 1px 2px rgba(255, 255, 255, 0.7) inset, -1px -1px 2px rgba(255, 255, 255, 0.57) inset;
+  transition: all 0.4s ease-out;
+}
+
+.active {
+  background: rgb(13, 85, 13);
+  border: 2px solid rgba(50, 250, 0, 0.9);
+  box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.7), 1px 1px 2px rgba(50, 250, 0, 0.7) inset, -1px -1px 2px rgba(50, 250, 0, 0.57) inset;
+}
+
+.control-btn:hover {
+  background: rgba(25, 215, 75, 0.7);
+  box-shadow: 7px 7px 7px rgba(50, 50, 50, 0.5), 1px 1px 2px rgba(16, 129, 50, 0.9) inset, -1px -1px 2px rgba(16, 129, 50, 0.9) inset;
+}

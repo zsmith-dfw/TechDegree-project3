@@ -7,6 +7,8 @@ setFocus();
 const hideOther = document.getElementById('other-title')
 hideOther.style.display= 'none';
 
+// T SHIRT SECTION
+
 const hideTheme = document.querySelectorAll('#design option')[0];
 hideTheme.hidden = true;
 const changeColor = document.querySelector('label[for="color"]');
@@ -16,23 +18,22 @@ allColors.hidden=true;
 
 
 console.log(allColors);
-let punsTheme = document.querySelectorAll('#design option')[1]
-let loveTheme = document.querySelectorAll('#design option')[2]
+
 let showDesign = document.querySelector('#design')
 
 
 showDesign.addEventListener('change', (e) => { // change event listener
  console.log(e.target.value);
- allColors.hidden = false // displayig color section
-  for (let i = 0; i < allColors.length; i ++) { // for loop looping through color options
-    if (e.target.value === 'js puns') { //if what user picks equals the punsTheme
-      if (allColors[i].innerHTML.includes('JS Puns')) { // if loop includes context JS puns
+ allColors.hidden = false // displaying color section
+  for (let i = 0; i < allColors.length; i ++) {
+    if (e.target.value === 'js puns') { 
+      if (allColors[i].innerHTML.includes('JS Puns')) {
        console.log(allColors[i].innerHTML);
-        allColors[i].style.display = 'block' //display them
+        allColors[i].style.display = 'block' 
         allColors[0].selected = true;
         
       } else {
-        allColors[i].style.display = 'none' // if not display none
+        allColors[i].style.display = 'none' 
       }
 
 
@@ -61,7 +62,8 @@ showDesign.addEventListener('change', (e) => { // change event listener
 //ACTIVITY SECTION
 
 let activityRollup = document.createElement('div')
-const activities = document.querySelector('.activities');
+let activities = document.querySelector('.activities');
+console.log(activities);
 activities.appendChild(activityRollup);
 let activityCost = 0
 console.log(activityRollup);
@@ -102,12 +104,129 @@ activities.addEventListener('change', (e) => {
 
 })
 
+// PAYMENT SECTION
+
+const selectPayment = document.querySelectorAll('#payment option')[0];
+selectPayment.hidden = true;
+const payment= document.querySelector('#payment')
+const creditCard = document.querySelector('.credit-card');
+console.log(creditCard);
+const paypal = document.querySelector('.paypal');
+paypal.hidden = true 
+console.log(paypal);
+const bitcoin = document.querySelector('.bitcoin');
+console.log(bitcoin);
+bitcoin.hidden = true 
+payment.addEventListener('change', (e) => {
+ if (e.target.value === 'credit card') {
+    creditCard.hidden = false
+    paypal.hidden = true
+    bitcoin.hidden = true
+
+ } else if (e.target.value === 'paypal') {
+  creditCard.hidden = true
+  paypal.hidden = false
+  bitcoin.hidden = true
+
+
+ } else if (e.target.value === 'bitcoin'){
+  creditCard.hidden = true
+  paypal.hidden = true
+  bitcoin.hidden = false
+ } 
+
+
+});
+
+//VALIDATOR VARIABLES
+const form = document.querySelector("form");
+const name = document.querySelector("#name");
+const email = document.getElementById("mail");
+const activityOptions = document.querySelectorAll('.activities input')
+const activityLegend = document.querySelector('.activities legend')
+console.log(activityLegend)
+const newDiv = document.createElement('div')
+activityLegend.appendChild(newDiv)
+
+
+// const cardNumber = document.querySelector('')
+// const zipCode = document.querySelector('')
+// const validateCvv = document.querySelector('')
+
+//NAME VALIDATION
+
+const nameValidator = () => {
+  const nameValue = name.value;
+  console.log(nameValue);
+    if (nameValue.length > 0) {
+      name.style.borderColor = "white";
+      return true;
+
+    } else {
+      name.style.borderColor = "red";
+      return false;
+    }
+
+}
+
+//EMAIL VALIDATION
+const emailValidator = () => {
+  const emailValue = email.value
+  const regex = new RegExp("/\S+@\S+\.\S+/"); //need "RegExp" this code snippet was provided by Keagan Fouche and Abhijeet Kasurde from stackoverflow.com
+  if (regex.test(emailValue)) {
+    email.style.borderColor = "white";
+    return true;
+
+  } else {
+    email.style.borderColor = "red";
+    return false;
+  }
 
 
 
+  }
+
+//ACTIVIITY VALIDATION
+
+const activityValidator = () => {
+  for(let i =0; i < activityOptions.length; i++) {
+    if(activityOptions[i].checked) {
+      newDiv.style.borderColor = "white";
+      return true;
+    } else {
+      newDiv.style.borderColor = "red";
+    }
+
+  } return false
+
+}
+
+//CREDIT CARD VALIDATION
+
+//ZIP CODE VALIDATION
+
+//CVV VALIDATION
+
+//VALIDATION LISTENER
+
+form.addEventListener('submit', (e) => {
+  if (!nameValidator()) {
+    e.preventDefault();
+    console.log('this validator prevented submission')
+  } 
+
+  if (!emailValidator()) {
+    e.preventDefault();
+    console.log('this validator prevented submission')
+  } 
+
+  if (!activityValidator()) {
+    e.preventDefault();
+    console.log('this validator prevented submission')
+  } 
 
 
 
+}
 
-
-
+);

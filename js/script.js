@@ -134,8 +134,8 @@ const validateCvv = document.getElementById('cvv')
 
 const nameValidator = () => {
   const nameValue = name.value;
-  console.log(nameValue);
-    if (nameValue.length > 0) {
+const regex = new RegExp(/^[a-zA-Z ]{2,30}$/);
+    if (regex.test(nameValue)) {
       name.style.borderColor = "white";
       return true;
 
@@ -240,7 +240,7 @@ form.addEventListener('submit', (e) => {
     console.log('this validator prevented submission')
   } 
 
-  if (creditCard[0].selected = true) {
+  if (creditCard[1].selected = true) {
 
   if (!cardValidator()) {
     e.preventDefault();

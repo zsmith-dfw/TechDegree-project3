@@ -88,7 +88,7 @@ activities.addEventListener('change', (e) => {
 // PAYMENT SECTION
 
 const selectPayment = document.querySelectorAll('#payment option')[0];
-selectPayment.hidden = true;
+selectPayment.remove();
 const payment= document.querySelector('#payment')
 const creditCard = document.querySelector('.credit-card');
 console.log(creditCard);
@@ -148,7 +148,7 @@ const nameValidator = () => {
 //EMAIL VALIDATION
 const emailValidator = () => {
   const emailValue = email.value
-  const regex = new RegExp("^[^@]+@[^@.]+\.[a-z]+$"); 
+  const regex = new RegExp(/\S+@\S+\.\S+/); 
   if (regex.test(emailValue)) {
     email.style.borderColor = "white";
     return true;

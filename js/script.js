@@ -89,6 +89,8 @@ activities.addEventListener('change', (e) => {
 
 const selectPayment = document.querySelectorAll('#payment option')[0];
 selectPayment.remove();
+const selectCredit = document.querySelectorAll('#payment option')[0];
+console.log(selectCredit)
 const payment= document.querySelector('#payment')
 const creditCard = document.querySelector('.credit-card');
 console.log(creditCard);
@@ -240,7 +242,7 @@ form.addEventListener('submit', (e) => {
     console.log('this validator prevented submission')
   } 
 
-  if (creditCard[1].selected = true) {
+  if (selectCredit.selected = true) {
 
   if (!cardValidator()) {
     e.preventDefault();

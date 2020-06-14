@@ -57,8 +57,6 @@ showDesign.addEventListener('change', (e) => { // change event listener
 
 });
 
-
-
 //ACTIVITY SECTION
 
 let activityRollup = document.createElement('div')
@@ -82,7 +80,7 @@ activities.addEventListener('change', (e) => {
     
   }
   console.log(activityCost);
-
+  activityRollup.style.color = "Black"
   activityRollup.textContent = `Total: $${activityCost}`
 
   let dateTimeGroup = clicked.getAttribute('data-day-and-time');
@@ -149,8 +147,8 @@ const newDiv = document.createElement('div')
 activityLegend.appendChild(newDiv)
 
 
-// const cardNumber = document.querySelector('')
-// const zipCode = document.querySelector('')
+const cardNumber = document.getElementById('cc-num')
+const zipCode = document.getElementById('zip')
 // const validateCvv = document.querySelector('')
 
 //NAME VALIDATION
@@ -182,7 +180,7 @@ const emailValidator = () => {
     return false;
   }
 
-
+  /^[^@]+@[^@.]+\.[a-z]+$/i
 
   }
 
@@ -191,10 +189,12 @@ const emailValidator = () => {
 const activityValidator = () => {
   for(let i =0; i < activityOptions.length; i++) {
     if(activityOptions[i].checked) {
-      newDiv.style.borderColor = "white";
+      activityRollup.style.color = "Black"
+      activityRollup.textContent = `Total: $${activityCost}`
       return true;
     } else {
-      newDiv.style.borderColor = "red";
+      activityRollup.style.color = "Red"
+      activityRollup.textContent = "You must select at least one activity" 
     }
 
   } return false
@@ -203,7 +203,35 @@ const activityValidator = () => {
 
 //CREDIT CARD VALIDATION
 
+const cardValidator = () => {
+  const cardValue = cardNumber.value
+  const regex = new RegExp("\b\d{13,16}\b"); 
+  if (regex.test(cardValue)) {
+    cardNumber.style.borderColor = "white";
+    return true;
+
+  } else {
+    cardNumber.style.borderColor = "red";
+    return false;
+  }
+
+  }
+
 //ZIP CODE VALIDATION
+
+const zipdValidator = () => {
+  const zipValue = zipCode.value
+  const regex = new RegExp("/^\d{1,5}$/"); 
+  if (regex.test(zipValue)) {
+    zipCode.style.borderColor = "white";
+    return true;
+
+  } else {
+    zipCode.style.borderColor = "red";
+    return false;
+  }
+
+  }
 
 //CVV VALIDATION
 
@@ -225,8 +253,19 @@ form.addEventListener('submit', (e) => {
     console.log('this validator prevented submission')
   } 
 
+  if (!cardValidator()) {
+    e.preventDefault();
+    console.log('this validator prevented submission')
+  } 
+
+  if (!zipdValidator()) {
+    e.preventDefault();
+    console.log('this validator prevented submission')
+  } 
 
 
 }
 
 );
+
+

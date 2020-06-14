@@ -15,12 +15,7 @@ const changeColor = document.querySelector('label[for="color"]');
 changeColor.textContent = 'Please select a T-shirt theme.'
 let allColors = document.getElementById('color');
 allColors.hidden=true;
-
-
-console.log(allColors);
-
 let showDesign = document.querySelector('#design')
-
 
 showDesign.addEventListener('change', (e) => { // change event listener
  console.log(e.target.value);
@@ -35,26 +30,18 @@ showDesign.addEventListener('change', (e) => { // change event listener
       } else {
         allColors[i].style.display = 'none' 
       }
-
-
     }
     else if (e.target.value === 'heart js') {
       if (allColors[i].innerHTML.includes('JS shirt')) {
         console.log(allColors[i].innerHTML);
-
-   
         allColors[i].style.display = 'block'
         allColors[3].selected = true;
 
       } else {
         allColors[i].style.display = 'none'
-
       }
-
     }
   }
-
-
 });
 
 //ACTIVITY SECTION
@@ -77,7 +64,6 @@ activities.addEventListener('change', (e) => {
 
   } else {
     activityCost = activityCost - displayCost
-    
   }
   console.log(activityCost);
   activityRollup.style.color = "Black"
@@ -95,11 +81,8 @@ activities.addEventListener('change', (e) => {
       } else {
         checkBoxes[i].disabled = false 
       }
-
     }
-
   }
-
 })
 
 // PAYMENT SECTION
@@ -126,15 +109,13 @@ payment.addEventListener('change', (e) => {
   paypal.hidden = false
   bitcoin.hidden = true
 
-
  } else if (e.target.value === 'bitcoin'){
   creditCard.hidden = true
   paypal.hidden = true
   bitcoin.hidden = false
  } 
-
-
-});
+}
+);
 
 //VALIDATOR VARIABLES
 const form = document.querySelector("form");
@@ -145,11 +126,9 @@ const activityLegend = document.querySelector('.activities legend')
 console.log(activityLegend)
 const newDiv = document.createElement('div')
 activityLegend.appendChild(newDiv)
-
-
 const cardNumber = document.getElementById('cc-num')
 const zipCode = document.getElementById('zip')
-// const validateCvv = document.querySelector('')
+const validateCvv = document.getElementById('cvv')
 
 //NAME VALIDATION
 
@@ -164,13 +143,12 @@ const nameValidator = () => {
       name.style.borderColor = "red";
       return false;
     }
-
 }
 
 //EMAIL VALIDATION
 const emailValidator = () => {
   const emailValue = email.value
-  const regex = new RegExp("/\S+@\S+\.\S+/"); //need "RegExp" this code snippet was provided by Keagan Fouche and Abhijeet Kasurde from stackoverflow.com
+  const regex = new RegExp("^[^@]+@[^@.]+\.[a-z]+$"); 
   if (regex.test(emailValue)) {
     email.style.borderColor = "white";
     return true;
@@ -179,11 +157,8 @@ const emailValidator = () => {
     email.style.borderColor = "red";
     return false;
   }
-
-  /^[^@]+@[^@.]+\.[a-z]+$/i
-
   }
-
+//need "RegExp" this code snippet was provided by Keagan Fouche and Abhijeet Kasurde from stackoverflow.com
 //ACTIVIITY VALIDATION
 
 const activityValidator = () => {
@@ -205,8 +180,8 @@ const activityValidator = () => {
 
 const cardValidator = () => {
   const cardValue = cardNumber.value
-  const regex = new RegExp("\b\d{13,16}\b"); 
-  if (regex.test(cardValue)) {
+  const re = new RegExp(/[1-9][0-9]{12,15}/); 
+  if (re.test(cardValue)) {
     cardNumber.style.borderColor = "white";
     return true;
 
@@ -214,15 +189,14 @@ const cardValidator = () => {
     cardNumber.style.borderColor = "red";
     return false;
   }
-
   }
 
 //ZIP CODE VALIDATION
 
 const zipdValidator = () => {
   const zipValue = zipCode.value
-  const regex = new RegExp("/^\d{1,5}$/"); 
-  if (regex.test(zipValue)) {
+  const re = new RegExp(/^\d{5}(?:[-\s]\d{4})?$/); 
+  if (re.test(zipValue)) {
     zipCode.style.borderColor = "white";
     return true;
 
@@ -230,10 +204,23 @@ const zipdValidator = () => {
     zipCode.style.borderColor = "red";
     return false;
   }
-
   }
 
 //CVV VALIDATION
+
+const cvvValidator = () => {
+  const cvvValue = validateCvv.value
+  const re = new RegExp(/^[0-9]{3}$/); 
+  if (re.test(cvvValue)) {
+    validateCvv.style.borderColor = "white";
+    return true;
+
+  } else {
+    validateCvv.style.borderColor = "red";
+    return false;
+  }
+
+  }
 
 //VALIDATION LISTENER
 
@@ -253,6 +240,8 @@ form.addEventListener('submit', (e) => {
     console.log('this validator prevented submission')
   } 
 
+  if (creditCard[0].selected = true) {
+
   if (!cardValidator()) {
     e.preventDefault();
     console.log('this validator prevented submission')
@@ -262,10 +251,13 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('this validator prevented submission')
   } 
-
-
+  
+  if (!cvvValidator()) {
+    e.preventDefault();
+    console.log('this validator prevented submission')
+  } 
 }
-
+}
 );
 
 

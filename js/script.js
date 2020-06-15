@@ -1,3 +1,4 @@
+// SET FOCUS - this is so 'name' is already selected
 
 function setFocus (){
     document.getElementById("name").focus();
@@ -18,16 +19,7 @@ jobRole.addEventListener('change', (e) => {
     } else {
       hideOther.style.display = 'none'
     }
-
-  
-  
-
-
-
-
 });
-
-
 
 // T SHIRT SECTION
 
@@ -39,13 +31,11 @@ let allColors = document.getElementById('color');
 allColors.hidden=true;
 let showDesign = document.querySelector('#design')
 
-showDesign.addEventListener('change', (e) => { // change event listener
- console.log(e.target.value);
- allColors.hidden = false // displaying color section
+showDesign.addEventListener('change', (e) => { 
+ allColors.hidden = false 
   for (let i = 0; i < allColors.length; i ++) {
     if (e.target.value === 'js puns') { 
       if (allColors[i].innerHTML.includes('JS Puns')) {
-       console.log(allColors[i].innerHTML);
         allColors[i].style.display = 'block' 
         allColors[0].selected = true;
         
@@ -55,7 +45,6 @@ showDesign.addEventListener('change', (e) => { // change event listener
     }
     else if (e.target.value === 'heart js') {
       if (allColors[i].innerHTML.includes('JS shirt')) {
-        console.log(allColors[i].innerHTML);
         allColors[i].style.display = 'block'
         allColors[3].selected = true;
 
@@ -70,29 +59,22 @@ showDesign.addEventListener('change', (e) => { // change event listener
 
 let activityRollup = document.createElement('div')
 let activities = document.querySelector('.activities');
-console.log(activities);
 activities.appendChild(activityRollup);
 let activityCost = 0
-console.log(activityRollup);
 
 activities.addEventListener('change', (e) => {
   const clicked = e.target;
-  console.log(clicked);
   let displayCost = clicked.getAttribute('data-cost');
   displayCost = parseInt(displayCost);
-  // console.log(displayCost);
   if (clicked.checked) {
     activityCost = activityCost + displayCost
-
   } else {
     activityCost = activityCost - displayCost
   }
-  console.log(activityCost);
+
   activityRollup.style.color = "Black"
   activityRollup.textContent = `Total: $${activityCost}`
-
   let dateTimeGroup = clicked.getAttribute('data-day-and-time');
-  console.log(dateTimeGroup);
   const checkBoxes = document.querySelectorAll('.activities input');
   for (let i = 0; i < checkBoxes.length; i ++) {
     const checkboxType = checkBoxes[i].getAttribute('data-day-and-time')
@@ -112,15 +94,11 @@ activities.addEventListener('change', (e) => {
 const selectPayment = document.querySelectorAll('#payment option')[0];
 selectPayment.remove();
 const selectCredit = document.querySelectorAll('#payment option')[0];
-console.log(selectCredit)
 const payment= document.querySelector('#payment')
 const creditCard = document.querySelector('.credit-card');
-console.log(creditCard);
 const paypal = document.querySelector('.paypal');
 paypal.hidden = true 
-console.log(paypal);
 const bitcoin = document.querySelector('.bitcoin');
-console.log(bitcoin);
 bitcoin.hidden = true 
 payment.addEventListener('change', (e) => {
  if (e.target.value === 'credit card') {
@@ -147,7 +125,6 @@ const name = document.querySelector("#name");
 const email = document.getElementById("mail");
 const activityOptions = document.querySelectorAll('.activities input')
 const activityLegend = document.querySelector('.activities legend')
-console.log(activityLegend)
 const newDiv = document.createElement('div')
 activityLegend.appendChild(newDiv)
 const cardNumber = document.getElementById('cc-num')
@@ -157,7 +134,7 @@ const validateCvv = document.getElementById('cvv')
 //NAME VALIDATION
 
 const nameValidator = () => {
-  const nameValue = name.value;
+const nameValue = name.value;
 const regex = new RegExp(/^[a-zA-Z ]{2,30}$/);
     if (regex.test(nameValue)) {
       name.style.borderColor = "white";
@@ -166,7 +143,7 @@ const regex = new RegExp(/^[a-zA-Z ]{2,30}$/);
     } else {
       name.style.borderColor = "red";
       return false;
-    }
+  }
 }
 
 //EMAIL VALIDATION
@@ -195,9 +172,7 @@ const activityValidator = () => {
       activityRollup.style.color = "Red"
       activityRollup.textContent = "You must select at least one activity" 
     }
-
   } return false
-
 }
 
 //CREDIT CARD VALIDATION
@@ -208,7 +183,6 @@ const cardValidator = () => {
   if (re.test(cardValue)) {
     cardNumber.style.borderColor = "white";
     return true;
-
   } else {
     cardNumber.style.borderColor = "red";
     return false;
@@ -223,7 +197,6 @@ const zipdValidator = () => {
   if (re.test(zipValue)) {
     zipCode.style.borderColor = "white";
     return true;
-
   } else {
     zipCode.style.borderColor = "red";
     return false;
@@ -232,56 +205,50 @@ const zipdValidator = () => {
 
 //CVV VALIDATION
 
-const cvvValidator = () => {
-  const cvvValue = validateCvv.value
-  const re = new RegExp(/^[0-9]{3}$/); 
-  if (re.test(cvvValue)) {
-    validateCvv.style.borderColor = "white";
-    return true;
-
-  } else {
-    validateCvv.style.borderColor = "red";
-    return false;
-  }
-
+  const cvvValidator = () => {
+    const cvvValue = validateCvv.value
+    const re = new RegExp(/^[0-9]{3}$/); 
+    if (re.test(cvvValue)) {
+      validateCvv.style.borderColor = "white";
+      return true;
+    } else {
+      validateCvv.style.borderColor = "red";
+      return false;
+    }
   }
 
 //VALIDATION LISTENER
 
-form.addEventListener('submit', (e) => {
-  if (!nameValidator()) {
-    e.preventDefault();
-    console.log('this validator prevented submission')
-  } 
+//We have an if statement before all the credit card functions fire in case another form of payment is chosen
 
-  if (!emailValidator()) {
-    e.preventDefault();
-    console.log('this validator prevented submission')
-  } 
+    form.addEventListener('submit', (e) => {
+      if (!nameValidator()) {
+        e.preventDefault();
+      } 
 
-  if (!activityValidator()) {
-    e.preventDefault();
-    console.log('this validator prevented submission')
-  } 
+      if (!emailValidator()) {
+        e.preventDefault();
+      } 
 
-  if (selectCredit.selected === true ) {
+      if (!activityValidator()) {
+        e.preventDefault();
+      } 
 
-  if (!cardValidator()) {
-    e.preventDefault();
-    console.log('this validator prevented submission')
-  } 
+      if (selectCredit.selected === true ) {
 
-  if (!zipdValidator()) {
-    e.preventDefault();
-    console.log('this validator prevented submission')
-  } 
-  
-  if (!cvvValidator()) {
-    e.preventDefault();
-    console.log('this validator prevented submission')
-  } 
-}
-}
+      if (!cardValidator()) {
+        e.preventDefault();
+      } 
+      
+      if (!zipdValidator()) {
+        e.preventDefault();
+      } 
+      
+      if (!cvvValidator()) {
+        e.preventDefault();
+      } 
+    }
+  }
 );
 
 

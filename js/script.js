@@ -4,8 +4,30 @@ function setFocus (){
 }
 setFocus();
 
-const hideOther = document.getElementById('other-title')
-hideOther.style.display= 'none';
+// JOB ROLE SECTION
+
+const hideOther = document.getElementById('other-title');
+hideOther.style.display = 'none'
+const jobRole = document.getElementById('title')
+
+jobRole.addEventListener('change', (e) => {
+
+    if (e.target.value === 'other') {
+      hideOther.style.display = 'block'
+    
+    } else {
+      hideOther.style.display = 'none'
+    }
+
+  
+  
+
+
+
+
+});
+
+
 
 // T SHIRT SECTION
 
@@ -242,7 +264,7 @@ form.addEventListener('submit', (e) => {
     console.log('this validator prevented submission')
   } 
 
-  if (selectCredit.selected = true) {
+  if (selectCredit.selected === true ) {
 
   if (!cardValidator()) {
     e.preventDefault();
